@@ -2,6 +2,7 @@ package com.zhao.mycalculator;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -48,47 +49,36 @@ public class MainActivity extends Activity {
         switch (v.getId()){
             case R.id.bt_0:
                 updateData('0');
-                checkIsResult(v);
                 break;
             case R.id.bt_1:
                 updateData('1');
-                checkIsResult(v);
                 break;
             case R.id.bt_2:
                 updateData('2');
-                checkIsResult(v);
                 break;
             case R.id.bt_3:
                 updateData('3');
-                checkIsResult(v);
                 break;
             case R.id.bt_4:
                 updateData('4');
-                checkIsResult(v);
                 break;
             case R.id.bt_5:
                 updateData('5');
-                checkIsResult(v);
                 break;
             case R.id.bt_6:
                 updateData('6');
-                checkIsResult(v);
                 break;
             case R.id.bt_7:
                 updateData('7');
-                checkIsResult(v);
                 break;
             case R.id.bt_8:
                 updateData('8');
-                checkIsResult(v);
                 break;
             case R.id.bt_9:
                 updateData('9');
-                checkIsResult(v);
                 break;
             case R.id.bt_point:
                 updateData('.');
-                checkIsResult(v);
                 break;
             case R.id.bt_delete:
                 updateData('d');
@@ -107,7 +97,10 @@ public class MainActivity extends Activity {
                 break;
             case R.id.bt_equal:
                 updateData('=');
-
+                break;
+            case R.id.tv_init:
+                init();
+                break;
         }
     }
 
@@ -171,8 +164,11 @@ public class MainActivity extends Activity {
                 cacheCount=Double.parseDouble(sb.toString());
                 operator();
                 operate='+';
+                cacheCount=0;
+                result=0;
                 break;
         }
+        Log.d(TAG,cacheCount+"#"+result);
     }
 
     private void operator(){
